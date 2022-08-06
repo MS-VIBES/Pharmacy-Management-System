@@ -1,0 +1,36 @@
+FUNCTIONS CREATED
+
+1. function for the add button
+def addbtn(self):
+                conn=mysql.connector.connect(host="localhost",username="root",password="Sharma9077@@",database="pms")
+                my_cursor=conn.cursor()
+                my_cursor.execute("insert into pharmacy (Ref,MedName) values(%s,%s)",(
+                                                                self.refno_var.get(),
+                                                                self.MedName_var.get()
+                                                        ))
+                conn.commit()
+                conn.close()
+                messagebox.showinfo("sucess","Medicine added")
+
+Explanation:- 
+here we have made a function namely addbtn which has self attribute .
+this function has a purpose to insert the entries given in  the Refernce no and medicine name to the mysql database created.
+frist we will create the connection of this function to the mysql database , which include the importing of mysql connector.  
+command given:- import mysql.connector
+then a variable declared namely "conn" to put the connection syntax in it.
+cursor command : it is an object which helps to execute th query and also fetch the records from the database if needed.
+execute command:- this functio helps to execute the query and return record according to the quesry given inside it. 
+It has further methods like fetchone, fetchall, fetchmany, which can be used accordingly.
+It requires two parameter to pass in it query and val in it.
+RETURN TYPE:- It will return the count of the numbers of rows affected during the query if any.The return type will be an integer (int or None).
+Now, we are going to show an example of the above
+Query used:- INSERT INTO ___table name__(column name/heading) VALUES (%s:- used as many time as there are columns), 
+value used:- variable is added here which will be declared at the start of the window to connect it with tkinter button. here i have used two variabled 
+                    self.refno_var.get() and self.MedName_var.get()
+                    We have added get function as it returns the value of the item
+
+conn.commit :- The commit() method is used to confirm the changes made by the user to the database. Whenever any change is made to the database using update or any other statements, it is necessary to commit the changes. If we donot use the commit() method after making any changes to the database, the database will not not be updated and changes will not be reflected
+
+conn.close:- The close() operation closes the connection--it doesn't do anything to the connection reference.
+
+================================================================================================================
